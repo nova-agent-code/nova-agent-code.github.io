@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "notes": "Patch release of Nova Agent with an updated Windows installer package.",
   "downloadUrl": "https://nova-agent-code.github.io/update.html",
   "publishedAt": "2026-09-27T14:45:33Z"
