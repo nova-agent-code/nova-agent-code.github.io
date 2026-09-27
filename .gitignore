@@ -1,0 +1,14 @@
+# Installers are shipped as GitHub Release assets — never committed
+downloads/
+*.exe
+*.msi
+
+# Local screenshots / working files
+*.log
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/

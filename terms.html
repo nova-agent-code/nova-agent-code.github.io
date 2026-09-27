@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Nova Agent</title>
+  <meta name="description" content="Terms of service for the Nova Agent desktop application and website." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter','system-ui','sans-serif'], mono: ['"JetBrains Mono"','monospace'] }, colors: { nova: { black: '#0a0a0a' } } } } };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0a0a'/><path d='M28 74V26h10l24 30V26h10v48H62L38 44v30z' fill='%23a855f7'/></svg>" />
+</head>
+<body class="bg-nova-black text-white font-sans antialiased selection:bg-violet-600/40">
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div class="aurora aurora-1"></div><div class="aurora aurora-2"></div>
+    <div class="grid-overlay"></div><div class="vignette"></div>
+  </div>
+
+  <header class="fixed top-0 inset-x-0 z-50 bg-black/70 backdrop-blur-xl border-b border-white/10">
+    <nav class="mx-auto max-w-4xl px-4 sm:px-6">
+      <div class="flex h-16 items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2.5">
+          <svg viewBox="0 0 100 100" class="h-7 w-7" aria-hidden="true"><rect width="100" height="100" rx="24" fill="#12091f" stroke="#7c3aed" stroke-width="4"/><path d="M28 74V26h10l24 30V26h10v48H62L38 44v30z" fill="#a855f7"/></svg>
+          <span class="font-bold">Nova<span class="text-violet-400">Agent</span></span>
+        </a>
+        <a href="index.html" class="text-sm text-white/50 hover:text-white transition-colors">← Back to site</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-28 pb-24">
+    <p class="section-kicker">Legal</p>
+    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Terms of Service</h1>
+    <p class="mt-3 text-sm text-white/40 font-mono">Last updated: 2026-09-28</p>
+
+    <div class="legal-content glass-card rounded-2xl p-6 sm:p-9 mt-9">
+      <h2>1. Acceptance</h2>
+      <p>By downloading, installing, or using Nova Agent ("the Application"), you agree to these Terms. If you do not agree, do not use the Application.</p>
+
+      <h2>2. License</h2>
+      <p>Nova Agent is provided free of charge for personal and commercial use. You may use it to build, modify, and ship software. You may not resell the Application as a standalone product, nor remove proprietary notices from it.</p>
+
+      <h2>3. Bring Your Own Key</h2>
+      <p>The Application requires your own API credentials for third-party LLM providers. You are solely responsible for:</p>
+      <ul>
+        <li>Securing your API keys and preventing unauthorized use.</li>
+        <li>All costs incurred with your chosen provider.</li>
+        <li>Compliance with each provider's terms of service.</li>
+      </ul>
+
+      <h2>4. Your code and your responsibility</h2>
+      <p>Nova Agent executes tools and shell commands on your machine on your behalf. You are responsible for the projects you point it at, for reviewing generated changes, and for backing up your work. The built-in execution gate is a safety aid, not a guarantee.</p>
+
+      <h2>5. No warranty</h2>
+      <p>The Application is provided "as is", without warranty of any kind, express or implied, including but not limited to merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the Application will be uninterrupted, error-free, or free of harmful components.</p>
+
+      <h2>6. Limitation of liability</h2>
+      <p>To the maximum extent permitted by law, the authors of Nova Agent shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of data, profits, or business arising out of your use of the Application.</p>
+
+      <h2>7. Updates</h2>
+      <p>The Application may prompt you to download updates. Updating is optional; continuing to use an older version is permitted, though compatibility with providers may degrade over time.</p>
+
+      <h2>8. Termination</h2>
+      <p>You may terminate these Terms at any time by uninstalling the Application and ceasing all use of it.</p>
+
+      <h2>9. Changes to these Terms</h2>
+      <p>We may revise these Terms from time to time. The current version will always be published on this page with an updated date.</p>
+    </div>
+  </main>
+
+  <footer class="border-t border-white/10 bg-black/40">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 py-8 flex items-center justify-between text-xs text-white/35">
+      <p>© <span id="year">2026</span> Nova Agent. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="privacy.html" class="hover:text-white/70">Privacy</a>
+        <a href="index.html" class="hover:text-white/70">Home</a>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

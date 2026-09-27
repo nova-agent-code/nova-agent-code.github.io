@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Update Nova Agent</title>
+  <meta name="description" content="You are running an older version. Update to the latest version of Nova Agent for new features, faster context management, and stability improvements." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace']
+          },
+          colors: {
+            nova: { black: '#0a0a0a', charcoal: '#1a1a1a', violet: '#7c3aed', purple: '#a855f7' }
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0a0a'/><path d='M28 74V26h10l24 30V26h10v48H62L38 44v30z' fill='%23a855f7'/></svg>" />
+</head>
+<body class="bg-nova-black text-white font-sans antialiased selection:bg-violet-600/40">
+
+  <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
+
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="grid-overlay"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <!-- Logo -->
+        <a href="index.html" class="group flex items-center gap-2.5 shrink-0">
+          <span class="logo-mark">
+            <svg viewBox="0 0 100 100" class="h-8 w-8" aria-hidden="true">
+              <rect width="100" height="100" rx="24" fill="#12091f" stroke="#7c3aed" stroke-width="4"/>
+              <path d="M28 74V26h10l24 30V26h10v48H62L38 44v30z" fill="#a855f7"/>
+            </svg>
+          </span>
+          <span class="text-lg font-bold tracking-tight">Nova<span class="text-violet-400">Agent</span></span>
+        </a>
+
+        <!-- Desktop links -->
+        <div class="hidden md:flex items-center gap-1">
+          <a href="index.html#features" class="nav-link">Features</a>
+          <a href="index.html#security" class="nav-link">Security</a>
+          <a href="index.html#how" class="nav-link">How it works</a>
+          <a href="index.html#download" class="nav-link">Download</a>
+          <a href="update.html" class="nav-link nav-link-active" aria-current="page">Update</a>
+        </div>
+
+        <!-- CTA -->
+        <div class="hidden md:block">
+          <a href="https://github.com/nova-agent-code/nova-agent-code.github.io/releases/download/v1.0.0/Nova-Agent-Setup-1.0.0.1.exe" class="btn-glow btn-sm">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download for Windows
+          </a>
+        </div>
+
+        <!-- Mobile toggle -->
+        <button id="menu-toggle" class="md:hidden relative h-10 w-10 -mr-2 flex items-center justify-center rounded-lg border border-white/10 bg-white/5" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="menu-bars"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden">
+      <div class="mobile-menu-inner px-5 py-6">
+        <a href="index.html#features" class="mobile-link">Features</a>
+        <a href="index.html#security" class="mobile-link">Security</a>
+        <a href="index.html#how" class="mobile-link">How it works</a>
+        <a href="index.html#download" class="mobile-link">Download</a>
+        <a href="update.html" class="mobile-link">Update</a>
+        <a href="https://github.com/nova-agent-code/nova-agent-code.github.io/releases/download/v1.0.0/Nova-Agent-Setup-1.0.0.1.exe" class="btn-glow w-full justify-center mt-4">Download for Windows</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="min-h-screen flex items-center justify-center px-4 sm:px-6 py-28">
+    <div class="w-full max-w-3xl">
+
+      <!-- Update Hero -->
+      <div class="text-center">
+        <div class="reveal inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-xs font-medium text-amber-300 backdrop-blur">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-amber-400"></span>
+          </span>
+          Update available
+        </div>
+
+        <h1 class="reveal mt-6 text-4xl sm:text-6xl font-extrabold tracking-tight">Update <span class="text-gradient">Nova Agent</span></h1>
+
+        <p class="reveal mt-5 text-base sm:text-lg text-white/60 leading-relaxed max-w-2xl mx-auto">
+          You are running an older version. Update to the latest version for new features,
+          faster context management, and stability improvements.
+        </p>
+
+        <!-- Version comparison -->
+        <div class="reveal mt-8 flex items-center justify-center gap-4 sm:gap-6 font-mono text-sm">
+          <div class="glass-card px-5 py-3 rounded-xl">
+            <div class="text-[10px] uppercase tracking-widest text-white/40 mb-1">Installed</div>
+            <div class="text-white/70 text-lg" id="installed-version">0.9.0</div>
+          </div>
+          <svg class="h-5 w-5 text-violet-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <div class="glass-card px-5 py-3 rounded-xl border-violet-500/40">
+            <div class="text-[10px] uppercase tracking-widest text-violet-300 mb-1">Latest</div>
+            <div class="text-violet-200 text-lg">1.0.0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Massive Download Button -->
+      <div class="reveal mt-10">
+        <a href="https://github.com/nova-agent-code/nova-agent-code.github.io/releases/download/v1.0.0/Nova-Agent-Setup-1.0.0.1.exe" class="mega-btn group w-full">
+          <span class="mega-btn-inner">
+            <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download Latest Version</span>
+          </span>
+          <span class="mega-btn-shine"></span>
+        </a>
+        <p class="mt-3 text-center text-xs text-white/40 font-mono">Nova-Agent-Setup-1.0.0.1.exe · 105 MB · Windows 10/11 (x64)</p>
+      </div>
+
+      <!-- Release Notes -->
+      <section class="reveal mt-12">
+        <div class="glass-card rounded-2xl p-6 sm:p-8">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-semibold">Release Notes</h2>
+            <span class="text-[10px] font-mono uppercase tracking-widest text-violet-300 border border-violet-500/30 bg-violet-500/10 rounded-full px-3 py-1">latest</span>
+          </div>
+
+          <div class="space-y-6">
+            <!-- v1.1.0 -->
+            <article class="release-entry">
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h3 class="font-mono font-semibold text-violet-300">v1.1.0</h3>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">latest</span>
+                <time class="text-xs text-white/35 font-mono">2026-09-28</time>
+              </div>
+              <ul class="release-list">
+                <li><span class="bullet">+</span> Added Auth System — signed sessions and per-workspace access control.</li>
+                <li><span class="bullet">+</span> New plugin shelf for one-click tool presets.</li>
+                <li><span class="bullet fix">~</span> Fixed UI chronological glitch in the activity timeline.</li>
+                <li><span class="bullet fix">~</span> Faster context management: distillation now runs incrementally.</li>
+                <li><span class="bullet fix">~</span> Stability fixes for long-running PID background processes.</li>
+              </ul>
+            </article>
+
+            <!-- v1.0.0 -->
+            <article class="release-entry">
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h3 class="font-mono font-semibold text-white/70">v1.0.0</h3>
+                <time class="text-xs text-white/35 font-mono">2026-09-26</time>
+              </div>
+              <ul class="release-list">
+                <li><span class="bullet">+</span> Initial commercial release of Nova Agent.</li>
+                <li><span class="bullet">+</span> Hard Tool Execution Gate &amp; Atomic Tool-Pair Eviction.</li>
+                <li><span class="bullet">+</span> 110+ LLM providers, 100% free &amp; BYOK.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Install instructions -->
+      <section class="reveal mt-10">
+        <div class="glass-card rounded-2xl p-6 sm:p-8">
+          <h2 class="text-lg font-semibold mb-6">How to install the update</h2>
+          <ol class="grid sm:grid-cols-3 gap-4">
+            <li class="install-step">
+              <span class="install-num">1</span>
+              <h4>Download</h4>
+              <p>Click the button above and save the <span class="font-mono text-violet-300">.exe</span> installer to your computer.</p>
+            </li>
+            <li class="install-step">
+              <span class="install-num">2</span>
+              <h4>Run the .exe</h4>
+              <p>Double-click the downloaded installer. Windows may ask you to confirm — choose <span class="font-medium text-white/80">Run</span>.</p>
+            </li>
+            <li class="install-step">
+              <span class="install-num">3</span>
+              <h4>Auto-swap</h4>
+              <p>The installer auto-closes your old app, replaces the files, and relaunches Nova Agent on the new version.</p>
+            </li>
+          </ol>
+          <div class="mt-6 pt-5 border-t border-white/10 flex items-start gap-3 text-sm text-white/50">
+            <svg class="h-4 w-4 mt-0.5 shrink-0 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <p>Save your work before updating — the installer will close any running Nova Agent instance. Your settings, keys, and history are preserved.</p>
+          </div>
+        </div>
+      </section>
+
+      <p class="reveal mt-8 text-center text-sm text-white/40">
+        New to Nova Agent? <a href="index.html" class="text-violet-300 hover:text-violet-200 underline underline-offset-4">Learn more →</a>
+      </p>
+    </div>
+  </main>
+
+  <footer class="border-t border-white/10 bg-black/40 backdrop-blur-xl">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/35">
+      <p>© <span id="year">2026</span> Nova Agent. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="privacy.html" class="hover:text-white/70 transition-colors">Privacy Policy</a>
+        <a href="terms.html" class="hover:text-white/70 transition-colors">Terms</a>
+        <a href="version.json" class="hover:text-white/70 transition-colors font-mono">version.json</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

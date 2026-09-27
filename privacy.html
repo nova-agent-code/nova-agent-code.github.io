@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Nova Agent</title>
+  <meta name="description" content="Nova Agent privacy policy. Local-first, no telemetry, your keys and code stay on your machine." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter','system-ui','sans-serif'], mono: ['"JetBrains Mono"','monospace'] }, colors: { nova: { black: '#0a0a0a' } } } } };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0a0a'/><path d='M28 74V26h10l24 30V26h10v48H62L38 44v30z' fill='%23a855f7'/></svg>" />
+</head>
+<body class="bg-nova-black text-white font-sans antialiased selection:bg-violet-600/40">
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div class="aurora aurora-1"></div><div class="aurora aurora-2"></div>
+    <div class="grid-overlay"></div><div class="vignette"></div>
+  </div>
+
+  <header class="fixed top-0 inset-x-0 z-50 bg-black/70 backdrop-blur-xl border-b border-white/10">
+    <nav class="mx-auto max-w-4xl px-4 sm:px-6">
+      <div class="flex h-16 items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2.5">
+          <svg viewBox="0 0 100 100" class="h-7 w-7" aria-hidden="true"><rect width="100" height="100" rx="24" fill="#12091f" stroke="#7c3aed" stroke-width="4"/><path d="M28 74V26h10l24 30V26h10v48H62L38 44v30z" fill="#a855f7"/></svg>
+          <span class="font-bold">Nova<span class="text-violet-400">Agent</span></span>
+        </a>
+        <a href="index.html" class="text-sm text-white/50 hover:text-white transition-colors">← Back to site</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-28 pb-24">
+    <p class="section-kicker">Legal</p>
+    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Privacy Policy</h1>
+    <p class="mt-3 text-sm text-white/40 font-mono">Last updated: 2026-09-28</p>
+
+    <div class="legal-content glass-card rounded-2xl p-6 sm:p-9 mt-9">
+      <h2>1. Overview</h2>
+      <p>Nova Agent is a local-first desktop application. We built it so that your source code, prompts, API keys, and project files never leave your machine except when you explicitly direct them to an LLM provider of your choosing.</p>
+
+      <h2>2. Data we do not collect</h2>
+      <ul>
+        <li>No account, email, or identity information — Nova Agent requires no sign-up.</li>
+        <li>No telemetry, analytics, crash reporting, or usage metrics.</li>
+        <li>No upload of your code, prompts, file contents, or terminal output to our servers.</li>
+        <li>No tracking cookies. This website sets none.</li>
+      </ul>
+
+      <h2>3. Data that stays on your device</h2>
+      <p>Your API keys, chat history, workspace settings, and session logs are stored locally in your user profile. You may delete them at any time by removing the application's data folder.</p>
+
+      <h2>4. Third-party LLM providers</h2>
+      <p>When you configure an API key, requests are sent directly from your computer to that provider (for example OpenAI, Anthropic, Google, or a local model). Your use of those services is governed by their own privacy policies. We never see, store, or proxy those requests.</p>
+
+      <h2>5. Downloads</h2>
+      <p>Installers and the version manifest are served statically from this website. Your IP address may be recorded transiently by the standard server access logs of our web host for security and bandwidth purposes only.</p>
+
+      <h2>6. Children</h2>
+      <p>Nova Agent is not directed at children under 13, and we do not knowingly collect any information from anyone.</p>
+
+      <h2>7. Changes</h2>
+      <p>If this policy changes materially, the updated version will be published on this page with a revised date.</p>
+
+      <h2>8. Contact</h2>
+      <p>Questions? Open an issue on our GitHub repository or contact the address listed on the project's README.</p>
+    </div>
+  </main>
+
+  <footer class="border-t border-white/10 bg-black/40">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 py-8 flex items-center justify-between text-xs text-white/35">
+      <p>© <span id="year">2026</span> Nova Agent. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="terms.html" class="hover:text-white/70">Terms</a>
+        <a href="index.html" class="hover:text-white/70">Home</a>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
