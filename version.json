@@ -1,5 +1,5 @@
 {
-  "version": "1.0.3",
+  "version": "1.0.4",
   "notes": "Improved automatic update system, fixed update detection and download-host validation, and updated the Windows installer package.",
   "downloadUrl": "https://nova-agent-code.github.io/update.html",
   "publishedAt": "2026-09-27T15:54:38Z"
