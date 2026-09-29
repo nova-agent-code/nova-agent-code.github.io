@@ -1,6 +1,6 @@
 {
-  "version": "1.0.4",
-  "notes": "Latest Nova Agent improvements and fixes, updated Windows installer, and general stability and performance improvements.",
+  "version": "1.0.5",
+  "notes": "Added Speech-to-Text (STT) support, fixed and improved the Nova Agent application icon, and improved overall stability and usability.",
   "downloadUrl": "https://nova-agent-code.github.io/update.html",
-  "publishedAt": "2026-09-28T11:18:06Z"
+  "publishedAt": "2026-09-29T09:15:20Z"
 }
