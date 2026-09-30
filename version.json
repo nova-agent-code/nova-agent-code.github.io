@@ -1,6 +1,6 @@
 {
-  "version": "1.0.6",
+  "version": "1.0.7",
   "notes": "Fixed and improved the API Key Provider System, improved API provider configuration and key handling, improved reliability when connecting to supported AI providers, and improved overall stability and usability.",
   "downloadUrl": "https://nova-agent-code.github.io/update.html",
-  "publishedAt": "2026-09-30T06:06:41Z"
+  "publishedAt": "2026-09-30T16:59:23Z"
 }
