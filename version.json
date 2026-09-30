@@ -1,6 +1,6 @@
 {
-  "version": "1.0.5",
-  "notes": "Added Speech-to-Text (STT) support, fixed and improved the Nova Agent application icon, and improved overall stability and usability.",
+  "version": "1.0.6",
+  "notes": "Fixed and improved the API Key Provider System, improved API provider configuration and key handling, improved reliability when connecting to supported AI providers, and improved overall stability and usability.",
   "downloadUrl": "https://nova-agent-code.github.io/update.html",
-  "publishedAt": "2026-09-29T09:15:20Z"
+  "publishedAt": "2026-09-30T06:06:41Z"
 }
